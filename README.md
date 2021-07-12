@@ -97,3 +97,15 @@ Collection 271126
   Chest:	Plate of the Great Hunt [4 26 8 24 4 8]
   Legs:		Mimetic Savior Greaves [17 12 9 28 4 4]
 ```
+
+
+# Very detailed instructions...
+Example for Windows with **example Paths**.
+1) Go to https://www.python.org/downloads/release/python-396/ and download `Windows embeddable package (64-bit)`. Unpack it and note down the path, for example `C:/Downloads/python39/`.
+2) Download this repository https://github.com/Mijago/D2-Gear-Calculator/archive/refs/heads/master.zip
+3) Unzip the master.zip and note the path, for example `C:/Downloads/master/D2-Gear-Calculator-master/`.
+4) Open a command line by pressing Win+R and type "cmd".
+5) Navigate to the directory of the repository, for example using `cd C:/Downloads/master/D2-Gear-Calculator-master/`. Using the `dir` command you should now see the "main.py".
+6) Install the dependencies with `C:/Downloads/python39/python.exe -m pip install numpy pandas matplotlib networkx`
+7) Edit `main.py` to your liking
+8) Execute it with `C:/Downloads/python39/python.exe main.py`
