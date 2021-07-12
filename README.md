@@ -26,10 +26,10 @@ Example for Windows with **example Paths**.
 2) Download this repository https://github.com/Mijago/D2-Gear-Calculator/archive/refs/heads/master.zip
 3) Unzip the master.zip and note the path, for example `C:/Downloads/master/D2-Gear-Calculator-master/`.
 4) Open a command line by pressing Win+R and type "cmd".
-5) Navigate to the directory of the repository, for example using `cd C:/Downloads/master/D2-Gear-Calculator-master/`. Using the `dir` command you should now see the "main.py".
+5) In the command line, navigate to the directory of the repository, for example using `cd C:/Downloads/master/D2-Gear-Calculator-master/`. Using the `dir` command you should now see the "main.py".
 6) Install the dependencies with `C:/Downloads/python39/python.exe -m pip install numpy pandas matplotlib networkx`
 7) Edit `main.py` to your liking
-8) Execute it with `C:/Downloads/python39/python.exe main.py`
+8) Execute it in the command line with `C:/Downloads/python39/python.exe main.py`
 
 # Configuration
 Adapt the following configuration to your liking. 
@@ -53,13 +53,22 @@ af = ArmorFilter(
         .setWastedStatPenaltyWeight(Stat.Discipline, weight=4, over100=1.1)
         .setWastedStatPenaltyWeight(Stat.Intellect, weight=4, over100=1.1)
         .setWastedStatPenaltyWeight(Stat.Strength, weight=4, over100=1.1)
-        # add base mods; you can also add stasis here
-        .addStaticStat(Stat.Mobility, 20)  # Powerful Friends
-        .addStaticStat(Stat.Strength, 20)  # Radiant Light
-    # Add filters
-    # .addFilter(MinimumStatValueFilter(Stat.Resilience, 50)) # Resilience must be above or equal to 50
-    # .addFilter(MaximumStatValueFilter(Stat.Mobility, 20)) # Mobility must be lower than or equal to 20
-    # .addFilter(SlotFilter(Slot.Legs, "Dunemarchers"))  # Only builds with dunemarchers
+        ## add base mods; you can also add stasis here manually, or use the shortcuts below
+        # .addStaticStat(Stat.Mobility, 20)     # Powerful Friends
+        # .addStaticStat(Stat.Strength, 20)     # Radiant Light
+        ## As a shortcut, you can also use the following commands
+        .addStaticPowerfulFriends()           # +20 mobility
+        .addStaticRadiantLight()              # +20 strength
+        ## STASIS
+        .addStaticStasisWhisperOfChains()     # +10 recovery
+        .addStaticStasisWhisperOfConduction() # +10 resilience, +10 intellect
+        .addStaticStasisWhisperOfDurance()    # +10 strength
+        .addStaticStasisWhisperOfShards()     # +10 resilience
+
+        # Add filters
+        .addFilter(MinimumStatValueFilter(Stat.Mobility, 70)) # Mobility MUST be >= 70
+        .addFilter(MaximumStatValueFilter(Stat.Mobility, 80)) # Mobility MUST be <= 80
+        .addFilter(NamedItemFilter(Slot.Legs, "Dunemarchers"))# Only builds with Dunemarchers in the leg slot
 )
 ```
 
