@@ -171,7 +171,6 @@ class ArmorFilter:
     def getScores(self):
         df2 = pd.DataFrame(self.allScores)
         print("Total Paths", len(df2))
-        print(df2)
 
         df2['tiers'] = (
                 + df2[Stat.Mobility.value].values // 10
@@ -193,23 +192,22 @@ class ArmorFilter:
                 + self.settings.weights[Stat.Strength.value] * (df2[Stat.Strength.value].values - 18)
 
                 # Penalties! every score from 1-4 and 6-9 is lost!
-                - 3 * (df2[Stat.Mobility.value].values % 5 > 0)
-                - 3 * (df2[Stat.Resilience.value].values % 5 > 0)
-                - 3 * (df2[Stat.Recovery.value].values % 5 > 0)
-                - 3 * (df2[Stat.Discipline.value].values % 5 > 0)
-                - 3 * (df2[Stat.Intellect.value].values % 5 > 0)
-                - 3 * (df2[Stat.Strength.value].values % 5 > 0)
+                - self.settings.wastedStatPenaltyWeight[Stat.Mobility.value] * (df2[Stat.Mobility.value].values % 5 > 0)
+                - self.settings.wastedStatPenaltyWeight[Stat.Resilience.value] * (df2[Stat.Resilience.value].values % 5 > 0)
+                - self.settings.wastedStatPenaltyWeight[Stat.Recovery.value] * (df2[Stat.Recovery.value].values % 5 > 0)
+                - self.settings.wastedStatPenaltyWeight[Stat.Discipline.value] * (df2[Stat.Discipline.value].values % 5 > 0)
+                - self.settings.wastedStatPenaltyWeight[Stat.Intellect.value] * (df2[Stat.Intellect.value].values % 5 > 0)
+                - self.settings.wastedStatPenaltyWeight[Stat.Strength.value] * (df2[Stat.Strength.value].values % 5 > 0)
                 # stats over 100 are bad
-                - 1.1 * np.maximum(df2[Stat.Mobility.value].values - 100, 0)
-                - 1.1 * np.maximum(df2[Stat.Resilience.value].values - 100, 0)
-                - 1.1 * np.maximum(df2[Stat.Recovery.value].values - 100, 0)
-                - 1.1 * np.maximum(df2[Stat.Discipline.value].values - 100, 0)
-                - 1.1 * np.maximum(df2[Stat.Intellect.value].values - 100, 0)
-                - 1.1 * np.maximum(df2[Stat.Strength.value].values - 100, 0)
+                - self.settings.wastedStatPenaltyWeightOver100[Stat.Mobility.value] * np.maximum(df2[Stat.Mobility.value].values - 100, 0)
+                - self.settings.wastedStatPenaltyWeightOver100[Stat.Resilience.value] * np.maximum(df2[Stat.Resilience.value].values - 100, 0)
+                - self.settings.wastedStatPenaltyWeightOver100[Stat.Recovery.value] * np.maximum(df2[Stat.Recovery.value].values - 100, 0)
+                - self.settings.wastedStatPenaltyWeightOver100[Stat.Discipline.value] * np.maximum(df2[Stat.Discipline.value].values - 100, 0)
+                - self.settings.wastedStatPenaltyWeightOver100[Stat.Intellect.value] * np.maximum(df2[Stat.Intellect.value].values - 100, 0)
+                - self.settings.wastedStatPenaltyWeightOver100[Stat.Strength.value] * np.maximum(df2[Stat.Strength.value].values - 100, 0)
         )
 
         self.scored = df2
-        #print(df2.sort_values(by=["score"], ascending=False).head(30))
 
     def saveScored(self, path, num=100):
         with open(path, 'w') as f:
