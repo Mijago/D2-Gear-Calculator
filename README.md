@@ -12,7 +12,7 @@ Note 3: Please try around before you ask me stuff (like installation - if it doe
 # How to use
 1. Download this repository, either with `git clone https://github.com/Mijago/D2-Gear-Calculator.git` or by downloading the ZIP-archive from github.
 2. Install python 3.8 or higher (tested with 3.8 and 3.9).
-3. Install the packages: numpy, pandas, matplotlib, networkx with `pip install numpy pandas matplotlib networkx`
+3. Install the packages: numpy, pandas, matplotlib, networkx with `py -m pip install numpy pandas matplotlib networkx`
 4. Open DIM, go to Settings and download the armor spreadsheet (at the end of the page). Put your destinyArmor.csv from DIM in the same folder as the `main.py`.
 5. Modify main.py to your liking. Set the Weights high (~1.5) for perks you like and low (~0.4) for perks you dont care about.
 6. Execute main.py with `py main.py`.
