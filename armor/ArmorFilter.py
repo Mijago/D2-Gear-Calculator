@@ -210,6 +210,7 @@ class ArmorFilter:
         self.scored = df2
 
     def saveScored(self, path, num=100):
+        print(self.scored.sort_values(by=["score"], ascending=False).head(25))
         with open(path, 'w') as f:
             for k, m in self.scored.sort_values(by=["score"], ascending=False).head(num).T.iteritems():
                 print('Collection', k, file=f)
