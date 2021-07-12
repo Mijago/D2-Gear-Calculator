@@ -7,6 +7,8 @@ Note 1: It thinks all your armor is masterworked!
 
 Note 2: It does not add any armor mods - so you can freely distribute the five mod slots to further increase the builds.
 
+Note 3: Please try around before you ask me stuff (like installation - if it doesn't work, it's probably user error). If you find an issue, open a Gitlab issue.
+
 # How to use
 1. Download this repository, either with `git clone https://github.com/Mijago/D2-Gear-Calculator.git` or by downloading the ZIP-archive from github.
 2. Install python 3.8 or higher (tested with 3.8 and 3.9).
@@ -16,6 +18,18 @@ Note 2: It does not add any armor mods - so you can freely distribute the five m
 6. Execute main.py with `py main.py`.
 7. `???`
 8. Profit. It does **not** add any stat mods into account, so that's up to you!
+
+
+## Very detailed instructions...
+Example for Windows with **example Paths**.
+1) Go to https://www.python.org/downloads/release/python-396/ and download `Windows embeddable package (64-bit)`. Unpack it and note down the path, for example `C:/Downloads/python39/`.
+2) Download this repository https://github.com/Mijago/D2-Gear-Calculator/archive/refs/heads/master.zip
+3) Unzip the master.zip and note the path, for example `C:/Downloads/master/D2-Gear-Calculator-master/`.
+4) Open a command line by pressing Win+R and type "cmd".
+5) Navigate to the directory of the repository, for example using `cd C:/Downloads/master/D2-Gear-Calculator-master/`. Using the `dir` command you should now see the "main.py".
+6) Install the dependencies with `C:/Downloads/python39/python.exe -m pip install numpy pandas matplotlib networkx`
+7) Edit `main.py` to your liking
+8) Execute it with `C:/Downloads/python39/python.exe main.py`
 
 # Configuration
 Adapt the following configuration to your liking. 
@@ -97,15 +111,3 @@ Collection 271126
   Chest:	Plate of the Great Hunt [4 26 8 24 4 8]
   Legs:		Mimetic Savior Greaves [17 12 9 28 4 4]
 ```
-
-
-# Very detailed instructions...
-Example for Windows with **example Paths**.
-1) Go to https://www.python.org/downloads/release/python-396/ and download `Windows embeddable package (64-bit)`. Unpack it and note down the path, for example `C:/Downloads/python39/`.
-2) Download this repository https://github.com/Mijago/D2-Gear-Calculator/archive/refs/heads/master.zip
-3) Unzip the master.zip and note the path, for example `C:/Downloads/master/D2-Gear-Calculator-master/`.
-4) Open a command line by pressing Win+R and type "cmd".
-5) Navigate to the directory of the repository, for example using `cd C:/Downloads/master/D2-Gear-Calculator-master/`. Using the `dir` command you should now see the "main.py".
-6) Install the dependencies with `C:/Downloads/python39/python.exe -m pip install numpy pandas matplotlib networkx`
-7) Edit `main.py` to your liking
-8) Execute it with `C:/Downloads/python39/python.exe main.py`
