@@ -54,6 +54,7 @@ class ArmorFilterSettings:
     def setStatWeight(self, stat, weight):
         self.weights[stat.value] = weight
         return self
+
     def setWastedStatPenaltyWeight(self, stat, weight, over100):
         self.wastedStatPenaltyWeight[stat.value] = weight
         self.wastedStatPenaltyWeightOver100[stat.value] = over100
@@ -62,3 +63,33 @@ class ArmorFilterSettings:
     def addFilter(self, filter: BaseFilter):
         self.itemFilters.append(filter)
         return self
+
+
+class ExtendedArmorFilterSettings(ArmorFilterSettings):
+    def __init__(self):
+        super(ExtendedArmorFilterSettings, self).__init__()
+
+    def addStaticPowerfulFriends(self):
+        """Adds 20 mobility as static stats."""
+        return self.addStaticStat(Stat.Mobility, 20)
+
+    def addStaticRadiantLight(self):
+        """Adds 20 strength as static stats."""
+        return self.addStaticStat(Stat.Mobility, 20)
+
+    def addStaticStasisWhisperOfChains(self):
+        """Adds 10 recovery as static stats."""
+        return self.addStaticStat(Stat.Recovery, 10)
+
+    def addStaticStasisWhisperOfConduction(self):
+        """Adds 10 resilience and 10 intellect as static stats."""
+        self.addStaticStat(Stat.Resilience, 10)
+        return self.addStaticStat(Stat.Intellect, 10)
+
+    def addStaticStasisWhisperOfDurance(self):
+        """Adds 10 strength as static stats."""
+        return self.addStaticStat(Stat.Strength, 10)
+
+    def addStaticStasisWhisperOfShards(self):
+        """Adds 10 resilience as static stats."""
+        return self.addStaticStat(Stat.Resilience, 10)
