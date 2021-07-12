@@ -14,6 +14,22 @@ Note: It thinks all your armor is masterworked!
 6. Profit
 
 # Example Output
+Example output for my titan armor with the following weights:
+```py
+    ArmorFilterSettings()
+        # Prepare Settings
+        .setClass("Titan")
+        .setStatWeight(Stat.Mobility, 0.3)
+        .setStatWeight(Stat.Resilience, 1.5)
+        .setStatWeight(Stat.Recovery, 1.2)
+        .setStatWeight(Stat.Discipline, 1.5)
+        .setStatWeight(Stat.Intellect, 0.6)
+        .setStatWeight(Stat.Strength, 0.3)
+        .addStaticStat(Stat.Mobility, 20)  # Powerful Friends
+        .addStaticStat(Stat.Strength, 20)  # Radiant Light
+```
+
+
 ```
 Collection 275015
   tiers 33
