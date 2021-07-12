@@ -1,8 +1,7 @@
 from armor.ArmorFilter import ArmorFilter, Stat
 from armor.ArmorFilterSettings import ExtendedArmorFilterSettings
 from armor.enums import Slot
-from armor.filters.SlotFilter import SlotFilter
-from armor.filters.MinimumStatValueFilter import MaximumStatValueFilter, MinimumStatValueFilter
+from armor.filters import NamedItemFilter,  MaximumStatValueFilter, MinimumStatValueFilter
 
 af = ArmorFilter(
     ExtendedArmorFilterSettings()
@@ -36,8 +35,9 @@ af = ArmorFilter(
         # Add filters
         # .addFilter(MinimumStatValueFilter(Stat.Mobility, 70)) # Mobility MUST be >= 70
         # .addFilter(MaximumStatValueFilter(Stat.Mobility, 80)) # Mobility MUST be <= 80
-        # .addFilter(SlotFilter(Slot.Legs, "Dunemarchers"))     # Only builds with dunemarchers in the leg slot
+        # .addFilter(NamedItemFilter(Slot.Legs, "Dunemarchers"))# Only builds with Dunemarchers in the leg slot
 )
+af.printSettings()
 af.buildGraphForFile("./destinyArmor.csv")
 af.buildPaths()
 af.getScores()

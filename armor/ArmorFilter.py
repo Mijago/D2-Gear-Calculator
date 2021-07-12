@@ -17,6 +17,9 @@ class ArmorFilter:
         self.allScores = []
         self.settings = settings
 
+    def printSettings(self):
+        print(self.settings)
+
     def __getClassItemNodeData(self):
         return {
             Stat.Mobility.value: 2, Stat.Resilience.value: 2, Stat.Recovery.value: 2,

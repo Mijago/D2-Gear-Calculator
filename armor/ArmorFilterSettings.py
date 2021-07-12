@@ -64,6 +64,19 @@ class ArmorFilterSettings:
         self.itemFilters.append(filter)
         return self
 
+    def __str__(self) -> str:
+        result = ""
+
+        result += "Weights:\t\t\t\t%s" % [self.weights[k] for k in self.weights]
+        result += "\nStatic Stats:\t\t\t%s" % [self.staticStats[k] for k in self.staticStats]
+        result += "\nWasted Stat Penalty:\t%s" % [self.wastedStatPenaltyWeight[k] for k in self.wastedStatPenaltyWeight]
+        result += "\nWasted Stat over 100 Penalty:\t%s" % [self.wastedStatPenaltyWeightOver100[k] for k in self.wastedStatPenaltyWeightOver100]
+        result += "\nClass: \t%s" % self.clazz
+        result += "\nFilter:"
+        for filter in self.itemFilters:
+            result += "\n %s" % filter
+        return result
+
 
 class ExtendedArmorFilterSettings(ArmorFilterSettings):
     def __init__(self):
