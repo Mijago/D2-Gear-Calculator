@@ -4,6 +4,7 @@ This tool takes your destinyArmor.csv from DIM and generates optimal gear-combin
 You basically tell the tool which stats are important for you and it will give you (hopefully) nice gear permutations.
 
 Note: It thinks all your armor is masterworked!
+Note: It does not add any armor mods - so you can freely distribute the five mod slots to further increase the builds.
 
 # How to use
 1. Download this repository, either with `git clone https://github.com/Mijago/D2-Gear-Calculator.git` or by downloading the ZIP-archive from github.
