@@ -171,6 +171,7 @@ class ArmorFilter:
     def getScores(self):
         df2 = pd.DataFrame(self.allScores)
         print("Total Paths", len(df2))
+        if len(df2) == 0: raise Exception("No paths exist. Maybe your filters are too restrictive?")
 
         df2['tiers'] = (
                 + df2[Stat.Mobility.value].values // 10
@@ -184,12 +185,12 @@ class ArmorFilter:
         df2['score'] = 0
         df2['score'] = (
                 + 2 * df2["tiers"].values
-                + self.settings.weights[Stat.Mobility.value] * (df2[Stat.Mobility.value].values - 18)
-                + self.settings.weights[Stat.Resilience.value] * (df2[Stat.Resilience.value].values - 18)
-                + self.settings.weights[Stat.Recovery.value] * (df2[Stat.Recovery.value].values - 18)
-                + self.settings.weights[Stat.Discipline.value] * (df2[Stat.Discipline.value].values - 18)
-                + self.settings.weights[Stat.Intellect.value] * (df2[Stat.Intellect.value].values - 18)
-                + self.settings.weights[Stat.Strength.value] * (df2[Stat.Strength.value].values - 18)
+                + self.settings.weights[Stat.Mobility.value] * (df2[Stat.Mobility.value].values)
+                + self.settings.weights[Stat.Resilience.value] * (df2[Stat.Resilience.value].values)
+                + self.settings.weights[Stat.Recovery.value] * (df2[Stat.Recovery.value].values)
+                + self.settings.weights[Stat.Discipline.value] * (df2[Stat.Discipline.value].values)
+                + self.settings.weights[Stat.Intellect.value] * (df2[Stat.Intellect.value].values)
+                + self.settings.weights[Stat.Strength.value] * (df2[Stat.Strength.value].values)
 
                 # Penalties! every score from 1-4 and 6-9 is lost!
                 - self.settings.wastedStatPenaltyWeight[Stat.Mobility.value] * (df2[Stat.Mobility.value].values % 5 > 0)
@@ -210,6 +211,8 @@ class ArmorFilter:
         self.scored = df2
 
     def saveScored(self, path, num=100):
+        pd.set_option('display.width', 2000)
+        pd.set_option('display.max_columns', 500)
         print(self.scored.sort_values(by=["score"], ascending=False).head(25))
         with open(path, 'w') as f:
             for k, m in self.scored.sort_values(by=["score"], ascending=False).head(num).T.iteritems():
