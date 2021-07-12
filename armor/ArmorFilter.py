@@ -218,6 +218,8 @@ class ArmorFilter:
         pd.set_option('display.max_columns', 500)
         print(self.scored.sort_values(by=["score"], ascending=False).head(25))
         with open(path, 'w') as f:
+            print(str(self.settings), file=f)
+            print("", file=f)
             for k, m in self.scored.sort_values(by=["score"], ascending=False).head(num).T.iteritems():
                 print('Collection', k, file=f)
                 scores = self.allScores[k]
