@@ -6,12 +6,12 @@ You basically tell the tool which stats are important for you and it will give y
 Note: It thinks all your armor is masterworked!
 
 # How to use
-3. Install packages: numpy, pandas, matplotlib, networkx 
-4. Put your destinyArmor.csv from DIM in this folder
-5. Modify main.py to your liking. Set the Weights high (~1.5) for perks you like and low (~0.4) for perks you dont care about.
-6. Execute main.py
-7. `???`
-8. Profit
+1. Install packages: numpy, pandas, matplotlib, networkx 
+2. Put your destinyArmor.csv from DIM in this folder
+3. Modify main.py to your liking. Set the Weights high (~1.5) for perks you like and low (~0.4) for perks you dont care about.
+4. Execute main.py
+5. `???`
+6. Profit
 
 # Example Output
 ```
