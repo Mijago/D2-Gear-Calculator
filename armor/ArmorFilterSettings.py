@@ -88,7 +88,7 @@ class ExtendedArmorFilterSettings(ArmorFilterSettings):
 
     def addStaticRadiantLight(self):
         """Adds 20 strength as static stats."""
-        return self.addStaticStat(Stat.Mobility, 20)
+        return self.addStaticStat(Stat.Strength, 20)
 
     def addStaticStasisWhisperOfChains(self):
         """Adds 10 recovery as static stats."""
